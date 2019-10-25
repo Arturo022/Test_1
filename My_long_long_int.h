@@ -87,7 +87,7 @@ My_long_long_int& My_long_long_int::operator/= (const My_long_long_int &rhs){
     return *this;
 }
 My_long_long_int& My_long_long_int::operator%= (const My_long_long_int &rhs){
-    value = value - rhs.value;
+    value = value % rhs.value;
     return *this;
 }
 My_long_long_int& My_long_long_int::operator++ (){
