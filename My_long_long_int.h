@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <math.h>
-#include <ostream>
+#include <iostream>
 
 class My_long_long_int
 {
@@ -13,10 +13,17 @@ class My_long_long_int
         My_long_long_int operator+ (const My_long_long_int &rhs);
         My_long_long_int operator- (const My_long_long_int &rhs);
         My_long_long_int operator* (const My_long_long_int &rhs);
+        My_long_long_int& operator*= (const My_long_long_int &rhs);
+        My_long_long_int& operator++ ();
+        My_long_long_int& operator-- ();
         My_long_long_int operator/ (const My_long_long_int &rhs);
+        My_long_long_int& operator/= (const My_long_long_int &rhs);
         My_long_long_int operator% (const My_long_long_int &rhs);
+        My_long_long_int& operator%= (const My_long_long_int &rhs);
         My_long_long_int& operator+= (const My_long_long_int &rhs);
         My_long_long_int& operator-= (const My_long_long_int &rhs);
+        bool operator<= (const My_long_long_int &rhs);
+        bool operator>= (const My_long_long_int &rhs);
         bool operator< (const My_long_long_int &rhs);
         bool operator> (const My_long_long_int &rhs);
         bool operator== (const My_long_long_int &rhs);
@@ -28,7 +35,7 @@ class My_long_long_int
 };
 
 My_long_long_int::My_long_long_int(){
-
+    value = 0;
 }
 My_long_long_int::My_long_long_int(const long long int &new_value){
     value = new_value;
@@ -70,6 +77,32 @@ My_long_long_int& My_long_long_int::operator+= (const My_long_long_int &rhs){
 My_long_long_int& My_long_long_int::operator-= (const My_long_long_int &rhs){
     value = value - rhs.value;
     return *this;
+}
+My_long_long_int& My_long_long_int::operator*= (const My_long_long_int &rhs){
+    value = value * rhs.value;
+    return *this;
+}
+My_long_long_int& My_long_long_int::operator/= (const My_long_long_int &rhs){
+    value = value / rhs.value;
+    return *this;
+}
+My_long_long_int& My_long_long_int::operator%= (const My_long_long_int &rhs){
+    value = value - rhs.value;
+    return *this;
+}
+My_long_long_int& My_long_long_int::operator++ (){
+    value = value + 1;
+    return *this;
+}
+My_long_long_int& My_long_long_int::operator-- (){
+    value = value - 1;
+    return *this;
+}
+bool My_long_long_int::operator>= (const My_long_long_int &rhs){
+    return(rhs.value <= this->value);
+}
+bool My_long_long_int::operator<= (const My_long_long_int &rhs){
+    return(rhs.value >= this->value);
 }
 bool My_long_long_int::operator== (const My_long_long_int &rhs){
     return(rhs.value == this->value);
